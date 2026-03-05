@@ -1,22 +1,30 @@
-// login.ejs
 <!DOCTYPE html>
 <html>
-<body>
+<body style="background-color: #ecffa9; color: #333; font-family: Arial, sans-serif;">
 <h1>Login</h1>
-<% if (err) { %>
+
+<% if (err === "invalid") { %>
 <p style="color:red;">Invalid email or password</p>
 <% } %>
+
+<% if (err === "duplicate") { %>
+<p style="color:red;">Email already exists</p>
+<% } %>
+
 <form method="POST" action="/login">
 <input name="email" placeholder="email" />
 <input name="password" type="password" placeholder="password" />
 <button type="submit">Login</button>
 </form>
+
 <hr />
+
 <p>Need a test user?</p>
 <form method="POST" action="/register">
 <input name="email" placeholder="email" />
 <input name="password" type="password" placeholder="password" />
 <button type="submit">Register (for testing)</button>
 </form>
+
 </body>
 </html>
